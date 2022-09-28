@@ -21,7 +21,7 @@
 export enum ErrorEnum {
   ALPHABET_NOT_FOUND = "The string input 's' should contain at least one alphabet letter.",
   MAX_LENGTH_REACHED = "The length of the string input 's' should not exceed 100 characters.",
-  MIN_LENGTH_REACHED = "The string input 's' should contain at least one alphabet letter.",
+  MIN_LENGTH_REACHED = "The string input 's' should contain at least one character.",
 }
 
 interface IStatus {
