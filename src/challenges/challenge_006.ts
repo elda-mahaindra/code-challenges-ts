@@ -38,7 +38,6 @@ const isValid = (N: number, inputs: string) => {
 
   switch (true) {
     case N < 0 || N >= 10000: {
-      console.info("N = ", N);
       throw new Error(ErrorEnum.OUT_OF_RANGE_N);
     }
     case inputLength !== N: {
