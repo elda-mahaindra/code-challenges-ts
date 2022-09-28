@@ -48,30 +48,28 @@ const isValid = (s: string) => {
 };
 
 export const solution = (s: string) => {
-  if (isValid(s)) {
-    const statuses = s
-      .split("")
-      .sort((a, b) => (a > b ? 1 : -1))
-      .reduce((statuses, v, i, sorted) => {
-        if (!/[a-zA-Z]/.test(v)) return statuses;
+  isValid(s);
 
-        const found = statuses.find((status) => status.char === v);
+  const statuses = s
+    .split("")
+    .sort((a, b) => (a > b ? 1 : -1))
+    .reduce((statuses, v, i, sorted) => {
+      if (!/[a-zA-Z]/.test(v)) return statuses;
 
-        if (!found) return [...statuses, { char: v, occurence: 1 }];
+      const found = statuses.find((status) => status.char === v);
 
-        return statuses.map((status) => {
-          const { char, occurence } = status;
+      if (!found) return [...statuses, { char: v, occurence: 1 }];
 
-          if (char === v) return { ...status, occurence: occurence + 1 };
+      return statuses.map((status) => {
+        const { char, occurence } = status;
 
-          return status;
-        });
-      }, [] as IStatus[]);
+        if (char === v) return { ...status, occurence: occurence + 1 };
 
-    const sorted = statuses.sort((a, b) =>
-      a.occurence < b.occurence ? 1 : -1
-    );
+        return status;
+      });
+    }, [] as IStatus[]);
 
-    return sorted[0].char;
-  }
+  const sorted = statuses.sort((a, b) => (a.occurence < b.occurence ? 1 : -1));
+
+  return sorted[0].char;
 };
