@@ -47,8 +47,8 @@
 */
 
 export enum ErrorEnum {
-  OUT_OF_RANGE_H = "The value of input 'h' should be between 2 and 50",
-  OUT_OF_RANGE_N = "The value of input 'n' should be between 1 and 10",
+  OUT_OF_RANGE_H = "The value of input 'h' should be between 2 and 50.",
+  OUT_OF_RANGE_N = "The value of input 'n' should be between 1 and 10.",
 }
 
 const isValid = (h: number, n: number) => {
