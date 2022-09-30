@@ -54,7 +54,6 @@ const failureCases = [
 
 describe("test challenge 004", () => {
   it.each(successCases)(
-    // "test sumAll($input) should result $output",
     "returns '$output' when lightX = '$input.lightX', lightY = '$input.lightY', initialTx = '$input.initialTx', and initialTy = '$input.initialTy'",
     ({ input, output }) => {
       const { lightX, lightY, initialTx, initialTy } = input;
@@ -64,7 +63,6 @@ describe("test challenge 004", () => {
   );
 
   it.each(failureCases)(
-    // "test sumAll($input) should result $output",
     "throws an error '$error' when lightX = '$input.lightX', lightY = '$input.lightY', initialTx = '$input.initialTx', and initialTy = '$input.initialTy'",
     ({ input, error }) => {
       const { lightX, lightY, initialTx, initialTy } = input;

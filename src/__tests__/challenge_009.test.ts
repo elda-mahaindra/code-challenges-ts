@@ -201,7 +201,6 @@ const failureCases = [
 
 describe("test challenge 009", () => {
   it.each(successCases)(
-    // "test sumAll($input) should result $output",
     "returns '$output' when w = '$input.w', h = '$input.h', and lines = '$input.lines'",
     ({ input, output }) => {
       const { w, h, lines } = input;
@@ -211,7 +210,6 @@ describe("test challenge 009", () => {
   );
 
   it.each(failureCases)(
-    // "test sumAll($input) should result $output",
     "throws an error '$error' when w = '$input.w', h = '$input.h', and lines = '$input.lines'",
     ({ input, error }) => {
       const { w, h, lines } = input;

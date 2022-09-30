@@ -40,7 +40,6 @@ const failureCases = [
 
 describe("test challenge 001", () => {
   it.each(successCases)(
-    // "test sumAll($input) should result $output",
     "returns '$output' when s = '$input.s'",
     ({ input, output }) => {
       expect(solution(input.s)).toBe(output);
@@ -48,7 +47,6 @@ describe("test challenge 001", () => {
   );
 
   it.each(failureCases)(
-    // "test sumAll($input) should result $output",
     "throws an error '$error' when s = '$input.s'",
     ({ input, error }) => {
       expect(() => solution(input.s)).toThrow(error);
