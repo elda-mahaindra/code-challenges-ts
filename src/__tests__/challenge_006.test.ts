@@ -10,19 +10,19 @@ const successCases = [
     output: 1,
   },
   {
-    input: { N: 3, inputs: "-12, -5, -137" },
+    input: { N: 3, inputs: "-12 -5 -137" },
     output: -5,
   },
   {
-    input: { N: 6, inputs: "42, -5, 12, 21, 5, 24" },
+    input: { N: 6, inputs: "42 -5 12 21 5 24" },
     output: 5,
   },
   {
-    input: { N: 6, inputs: "42, 5, 12, 21, -5, 24" },
+    input: { N: 6, inputs: "42 5 12 21 -5 24" },
     output: 5,
   },
   {
-    input: { N: 10, inputs: "-5, -4, -2, 12, -40, 4, 2, 18, 11, 5" },
+    input: { N: 10, inputs: "-5 -4 -2 12 -40 4 2 18 11 5" },
     output: 2,
   },
 ];
