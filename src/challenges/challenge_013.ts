@@ -98,6 +98,7 @@ export const solution = (width: number, height: number, lines: string[]) => {
             if (lines[j][ii] === "0") {
               node = node.concat(` ${ii} ${j}`);
               found = true;
+              break;
             }
             ii++;
           }
@@ -111,7 +112,6 @@ export const solution = (width: number, height: number, lines: string[]) => {
           let jj = j + 1;
 
           while (!found && jj < height) {
-            console.log("FOUND", jj);
             if (lines[jj][i] === "0") {
               node = node.concat(` ${i} ${jj}`);
               found = true;
