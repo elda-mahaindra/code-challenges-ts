@@ -40,7 +40,7 @@ const isValid = (N: number, powers: number[]) => {
     }
     // ensure each Pi inside powers following the constraint
     case powers.reduce(
-      (valid, power) => valid || power <= 0 || power > 10000000,
+      (invalid, power) => invalid || power <= 0 || power > 10000000,
       false
     ): {
       throw new Error(ErrorEnum.OUT_OF_RANGE_P);
