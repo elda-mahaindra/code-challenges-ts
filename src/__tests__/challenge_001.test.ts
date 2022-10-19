@@ -8,14 +8,17 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge001>(
 
 const successCases = [
   {
+    id: 0,
     input: { s: "abcddefda1111133333333" },
     output: "d",
   },
   {
+    id: 1,
     input: { s: "AA0AB0BB0ccc0aa0aw00wo0BBBw123123" },
     output: "B",
   },
   {
+    id: 2,
     input: { s: "aaaaaaaaaaaBCGDhsjwnq" },
     output: "a",
   },
@@ -23,14 +26,17 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: { s: "0000000012312313123" },
     error: ErrorEnum.ALPHABET_NOT_FOUND,
   },
   {
+    id: 1,
     input: { s: "" },
     error: ErrorEnum.MIN_LENGTH_REACHED,
   },
   {
+    id: 2,
     input: {
       s: "zvchW39Kt5mQQLXXE8IekkBAVOjwRVaKaHGwSI44uuJ005n1luXnfwW8pBW7S1ujXdrintWaZ7nK6dBsjch4BRPYazB2kdcAgfZak",
     },
@@ -39,17 +45,11 @@ const failureCases = [
 ];
 
 describe("test challenge 001", () => {
-  it.each(successCases)(
-    "returns '$output' when s = '$input.s'",
-    ({ input, output }) => {
-      expect(solution(input.s)).toBe(output);
-    }
-  );
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    expect(solution(input.s)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when s = '$input.s'",
-    ({ input, error }) => {
-      expect(() => solution(input.s)).toThrow(error);
-    }
-  );
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    expect(() => solution(input.s)).toThrow(error);
+  });
 });

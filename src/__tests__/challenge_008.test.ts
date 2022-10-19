@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge008>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       N: 8,
       playerSigns: ["4 R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -13,6 +14,7 @@ const successCases = [
     output: "2 6 5 1",
   },
   {
+    id: 1,
     input: {
       N: 2,
       playerSigns: ["1 S", "2 S"],
@@ -20,6 +22,7 @@ const successCases = [
     output: "1 2",
   },
   {
+    id: 2,
     input: {
       N: 32,
       // prettier-ignore
@@ -37,6 +40,7 @@ const successCases = [
     output: "10 30 31 20 11 15",
   },
   {
+    id: 3,
     input: {
       N: 128,
       // prettier-ignore
@@ -78,6 +82,7 @@ const successCases = [
     output: "128 75 2 10 29 6 1 3",
   },
   {
+    id: 4,
     input: {
       N: 1024,
       // prettier-ignore
@@ -346,6 +351,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       N: 1,
       playerSigns: ["4 R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -353,6 +359,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_N,
   },
   {
+    id: 1,
     input: {
       N: 12,
       playerSigns: ["4 R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -360,6 +367,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_N,
   },
   {
+    id: 2,
     input: {
       N: 16,
       playerSigns: ["4 R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -367,6 +375,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_PLAYER_SIGNS,
   },
   {
+    id: 3,
     input: {
       N: 8,
       playerSigns: ["$ R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -374,6 +383,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_PLAYER_SIGNS,
   },
   {
+    id: 4,
     input: {
       N: 8,
       playerSigns: ["-4 R", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -381,6 +391,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_PLAYER_SIGNS,
   },
   {
+    id: 5,
     input: {
       N: 8,
       playerSigns: ["4 X", "1 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -388,6 +399,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_PLAYER_SIGNS,
   },
   {
+    id: 6,
     input: {
       N: 8,
       playerSigns: ["4 R", "4 P", "8 P", "3 R", "7 C", "5 S", "6 L", "2 L"],
@@ -397,21 +409,15 @@ const failureCases = [
 ];
 
 describe("test challenge 008", () => {
-  it.each(successCases)(
-    "returns '$output' when N = '$input.N' and playerSigns = '$input.playerSigns'",
-    ({ input, output }) => {
-      const { N, playerSigns } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { N, playerSigns } = input;
 
-      expect(solution(N, playerSigns)).toBe(output);
-    }
-  );
+    expect(solution(N, playerSigns)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when N = '$input.N' and playerSigns = '$input.playerSigns'",
-    ({ input, error }) => {
-      const { N, playerSigns } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { N, playerSigns } = input;
 
-      expect(() => solution(N, playerSigns)).toThrow(error);
-    }
-  );
+    expect(() => solution(N, playerSigns)).toThrow(error);
+  });
 });

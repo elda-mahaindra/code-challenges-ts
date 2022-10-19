@@ -6,14 +6,17 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge007>(
 
 const successCases = [
   {
+    id: 0,
     input: { N: 3, powers: [5, 8, 9] },
     output: 1,
   },
   {
+    id: 1,
     input: { N: 10, powers: [5, 15, 17, 3, 8, 11, 28, 6, 55, 7] },
     output: 1,
   },
   {
+    id: 2,
     input: {
       N: 100,
       powers: [
@@ -38,35 +41,32 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: { N: -1, powers: [5, 8, 9] },
     error: ErrorEnum.OUT_OF_RANGE_N,
   },
   {
+    id: 1,
     input: { N: 2, powers: [5, 8, 9] },
     error: ErrorEnum.INVALID_POWERS,
   },
   {
+    id: 2,
     input: { N: 3, powers: [5, 8, -9] },
     error: ErrorEnum.OUT_OF_RANGE_P,
   },
 ];
 
 describe("test challenge 007", () => {
-  it.each(successCases)(
-    "returns '$output' when N = '$input.N' and powers = '$input.powers'",
-    ({ input, output }) => {
-      const { N, powers } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { N, powers } = input;
 
-      expect(solution(N, powers)).toBe(output);
-    }
-  );
+    expect(solution(N, powers)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when N = '$input.N' and powers = '$input.powers'",
-    ({ input, error }) => {
-      const { N, powers } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { N, powers } = input;
 
-      expect(() => solution(N, powers)).toThrow(error);
-    }
-  );
+    expect(() => solution(N, powers)).toThrow(error);
+  });
 });

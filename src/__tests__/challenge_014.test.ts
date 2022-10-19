@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge014>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       N: 5,
       dictionary: ["because", "first", "these", "could", "which"],
@@ -14,6 +15,7 @@ const successCases = [
     output: "which",
   },
   {
+    id: 1,
     input: {
       N: 10,
       dictionary: [
@@ -33,6 +35,7 @@ const successCases = [
     output: "potsie",
   },
   {
+    id: 2,
     input: {
       N: 10,
       dictionary: [
@@ -52,6 +55,7 @@ const successCases = [
     output: "powers",
   },
   {
+    id: 3,
     input: {
       N: 10,
       dictionary: [
@@ -71,6 +75,7 @@ const successCases = [
     output: "waster",
   },
   {
+    id: 4,
     input: {
       N: 5,
       dictionary: ["entire", "tween", "soft", "would", "test"],
@@ -79,6 +84,7 @@ const successCases = [
     output: "tween",
   },
   {
+    id: 5,
     input: {
       N: 5,
       dictionary: ["qzyoq", "azejuy", "kqjsdh", "aeiou", "qsjkdh"],
@@ -87,6 +93,7 @@ const successCases = [
     output: "aeiou",
   },
   {
+    id: 6,
     input: {
       N: 10,
       dictionary: [
@@ -109,6 +116,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       N: 0,
       dictionary: ["because", "first", "these", "could", "which"],
@@ -117,6 +125,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_N,
   },
   {
+    id: 1,
     input: {
       N: 5,
       dictionary: ["because", "first", "these", "could", "which"],
@@ -125,6 +134,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_LETTERS,
   },
   {
+    id: 2,
     input: {
       N: 5,
       dictionary: ["because", "first", "these"],
@@ -133,6 +143,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_DICTIONARY,
   },
   {
+    id: 3,
     input: {
       N: 5,
       dictionary: [
@@ -149,21 +160,15 @@ const failureCases = [
 ];
 
 describe("test challenge 014", () => {
-  it.each(successCases)(
-    "returns '$output' when N = '$input.N', dictionary = '$input.dictionary' and letters = '$input.letters'",
-    ({ input, output }) => {
-      const { N, dictionary, letters } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { N, dictionary, letters } = input;
 
-      expect(solution(N, dictionary, letters)).toBe(output);
-    }
-  );
+    expect(solution(N, dictionary, letters)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when N = '$input.N', dictionary = '$input.dictionary' and letters = '$input.letters'",
-    ({ input, error }) => {
-      const { N, dictionary, letters } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { N, dictionary, letters } = input;
 
-      expect(() => solution(N, dictionary, letters)).toThrow(error);
-    }
-  );
+    expect(() => solution(N, dictionary, letters)).toThrow(error);
+  });
 });

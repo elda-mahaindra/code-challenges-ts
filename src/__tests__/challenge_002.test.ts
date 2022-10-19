@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge002>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       board: [
         [7, 9, 2, 1, 5, 4, 3, 8, 6],
@@ -22,6 +23,7 @@ const successCases = [
     output: "valid",
   },
   {
+    id: 1,
     input: {
       board: [
         [5, 5, 5, 5, 5, 5, 5, 5, 5],
@@ -41,6 +43,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       board: [
         [7, 9, 2, 1, 5, 4, 3],
@@ -55,6 +58,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_INPUT_DIMENSION,
   },
   {
+    id: 1,
     input: {
       board: [
         [7, 0, 2, 1, 5, 4, 3, 8, 6],
@@ -73,17 +77,11 @@ const failureCases = [
 ];
 
 describe("test challenge 002", () => {
-  it.each(successCases)(
-    "returns '$output' when s = '$input.board'",
-    ({ input, output }) => {
-      expect(solution(input.board)).toBe(output);
-    }
-  );
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    expect(solution(input.board)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when s = '$input.board'",
-    ({ input, error }) => {
-      expect(() => solution(input.board)).toThrow(error);
-    }
-  );
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    expect(() => solution(input.board)).toThrow(error);
+  });
 });

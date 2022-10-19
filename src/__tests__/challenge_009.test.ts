@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge009>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       w: 16,
       h: 9,
@@ -34,6 +35,7 @@ const successCases = [
     ],
   },
   {
+    id: 1,
     input: {
       w: 10,
       h: 7,
@@ -58,6 +60,7 @@ const successCases = [
     ],
   },
   {
+    id: 2,
     input: {
       w: 16,
       h: 11,
@@ -90,6 +93,7 @@ const successCases = [
     ],
   },
   {
+    id: 3,
     input: {
       w: 26,
       h: 12,
@@ -127,6 +131,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       w: 0,
       h: 9,
@@ -145,6 +150,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_W,
   },
   {
+    id: 1,
     input: {
       w: 16,
       h: 0,
@@ -163,6 +169,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_H,
   },
   {
+    id: 2,
     input: {
       w: 16,
       h: 9,
@@ -180,6 +187,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_LINES,
   },
   {
+    id: 3,
     input: {
       w: 16,
       h: 9,
@@ -200,21 +208,15 @@ const failureCases = [
 ];
 
 describe("test challenge 009", () => {
-  it.each(successCases)(
-    "returns '$output' when w = '$input.w', h = '$input.h', and lines = '$input.lines'",
-    ({ input, output }) => {
-      const { w, h, lines } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { w, h, lines } = input;
 
-      expect(solution(w, h, lines)).toEqual(output);
-    }
-  );
+    expect(solution(w, h, lines)).toEqual(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when w = '$input.w', h = '$input.h', and lines = '$input.lines'",
-    ({ input, error }) => {
-      const { w, h, lines } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { w, h, lines } = input;
 
-      expect(() => solution(w, h, lines)).toThrow(error);
-    }
-  );
+    expect(() => solution(w, h, lines)).toThrow(error);
+  });
 });

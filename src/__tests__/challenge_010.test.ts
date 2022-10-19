@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge010>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       forest: [
         // prettier-ignore
@@ -20,6 +21,7 @@ const successCases = [
     output: 12,
   },
   {
+    id: 1,
     input: {
       forest: [
         // prettier-ignore
@@ -34,6 +36,7 @@ const successCases = [
     output: 6,
   },
   {
+    id: 2,
     input: {
       forest: [
         // prettier-ignore
@@ -48,6 +51,7 @@ const successCases = [
     output: "JUST RUN",
   },
   {
+    id: 3,
     input: {
       forest: [
         // prettier-ignore
@@ -62,6 +66,7 @@ const successCases = [
     output: 24,
   },
   {
+    id: 4,
     input: {
       forest: [
         // prettier-ignore
@@ -76,6 +81,7 @@ const successCases = [
     output: "JUST RUN",
   },
   {
+    id: 5,
     input: {
       forest: [
         // prettier-ignore
@@ -90,6 +96,7 @@ const successCases = [
     output: "JUST RUN",
   },
   {
+    id: 6,
     input: {
       forest: [
         // prettier-ignore
@@ -104,6 +111,7 @@ const successCases = [
     output: "JUST RUN",
   },
   {
+    id: 7,
     input: {
       forest: [
         // prettier-ignore
@@ -121,6 +129,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       forest: [
         // prettier-ignore
@@ -136,17 +145,11 @@ const failureCases = [
 ];
 
 describe("test challenge 010", () => {
-  it.each(successCases)(
-    "returns '$output' when forest = '$input.forest'",
-    ({ input, output }) => {
-      expect(solution(input.forest)).toBe(output);
-    }
-  );
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    expect(solution(input.forest)).toBe(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when forest = '$input.forest'",
-    ({ input, error }) => {
-      expect(() => solution(input.forest)).toThrow(error);
-    }
-  );
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    expect(() => solution(input.forest)).toThrow(error);
+  });
 });

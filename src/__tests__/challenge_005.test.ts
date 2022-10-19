@@ -6,10 +6,12 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge005>(
 
 const successCases = [
   {
+    id: 0,
     input: { T: "E" },
     output: ["### ", "#   ", "##  ", "#   ", "### "],
   },
   {
+    id: 1,
     input: { T: "MANHATTAN" },
     output: [
       "# #  #  ### # #  #  ### ###  #  ### ",
@@ -20,6 +22,7 @@ const successCases = [
     ],
   },
   {
+    id: 2,
     input: { T: "ManhAtTan" },
     output: [
       "# #  #  ### # #  #  ### ###  #  ### ",
@@ -30,6 +33,7 @@ const successCases = [
     ],
   },
   {
+    id: 3,
     input: { T: "M@NH@TT@N" },
     output: [
       "# # ### ### # # ### ### ### ### ### ",
@@ -43,6 +47,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       T: "vFSnqyFMDeLxOGvcuKaFAVwNIEAABjtaAoZeOscdZqIIDluAAqSpoZrOsxZmHiJotsthzgzcQeKxmtTdjPkRGfXPTYwerPVhBWHkbJPIZBWtEviVrrpDtYhxSdmaOCsHPDDucToiANkONOdnIKDclAaOAlOEJXvwSzXchbbgVXiIgKomizGnLEPWEJyhAKKbkhgHawps",
     },
@@ -51,17 +56,11 @@ const failureCases = [
 ];
 
 describe("test challenge 005", () => {
-  it.each(successCases)(
-    "returns '$output' when T = '$input.T'",
-    ({ input, output }) => {
-      expect(solution(input.T)).toEqual(output);
-    }
-  );
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    expect(solution(input.T)).toEqual(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when T = '$input.T'",
-    ({ input, error }) => {
-      expect(() => solution(input.T)).toThrow(error);
-    }
-  );
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    expect(() => solution(input.T)).toThrow(error);
+  });
 });

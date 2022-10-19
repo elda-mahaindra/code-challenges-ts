@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge016>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       n: 2,
       m: 3,
@@ -22,6 +23,7 @@ const successCases = [
     ],
   },
   {
+    id: 1,
     input: {
       n: 1,
       m: 1,
@@ -31,6 +33,7 @@ const successCases = [
     output: ["B --___---___---___---___---"],
   },
   {
+    id: 2,
     input: {
       n: 3,
       m: 3,
@@ -48,6 +51,7 @@ const successCases = [
     ],
   },
   {
+    id: 3,
     input: {
       n: 3,
       m: 3,
@@ -65,6 +69,7 @@ const successCases = [
     ],
   },
   {
+    id: 4,
     input: {
       n: 3,
       m: 3,
@@ -82,6 +87,7 @@ const successCases = [
     ],
   },
   {
+    id: 5,
     input: {
       n: 1,
       m: 1,
@@ -91,6 +97,7 @@ const successCases = [
     output: ["OUT -_--__---___----____-_--__---___"],
   },
   {
+    id: 6,
     input: {
       n: 3,
       m: 3,
@@ -112,6 +119,7 @@ const successCases = [
     ],
   },
   {
+    id: 7,
     input: {
       n: 3,
       m: 2,
@@ -128,6 +136,7 @@ const successCases = [
     ],
   },
   {
+    id: 8,
     input: {
       n: 4,
       m: 3,
@@ -146,6 +155,7 @@ const successCases = [
     ],
   },
   {
+    id: 9,
     input: {
       n: 4,
       m: 16,
@@ -197,6 +207,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       n: 5,
       m: 3,
@@ -209,6 +220,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_N,
   },
   {
+    id: 1,
     input: {
       n: 2,
       m: 17,
@@ -221,6 +233,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_M,
   },
   {
+    id: 2,
     input: {
       n: 2,
       m: 3,
@@ -234,6 +247,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_INPUT_SIGNALS,
   },
   {
+    id: 3,
     input: {
       n: 2,
       m: 3,
@@ -246,6 +260,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_INPUT_SIGNALS,
   },
   {
+    id: 4,
     input: {
       n: 2,
       m: 3,
@@ -258,6 +273,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_OPERATIONS,
   },
   {
+    id: 5,
     input: {
       n: 2,
       m: 3,
@@ -272,21 +288,15 @@ const failureCases = [
 ];
 
 describe("test challenge 016", () => {
-  it.each(successCases)(
-    "returns '$output' when n = '$input.n', m = '$input.m', inputSignals = '$input.inputSignals' and operations = '$input.operations'",
-    ({ input, output }) => {
-      const { n, m, inputSignals, operations } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { n, m, inputSignals, operations } = input;
 
-      expect(solution(n, m, inputSignals, operations)).toEqual(output);
-    }
-  );
+    expect(solution(n, m, inputSignals, operations)).toEqual(output);
+  });
 
-  it.each(failureCases)(
-    "throws an error '$error' when n = '$input.n', m = '$input.m', inputSignals = '$input.inputSignals' and operations = '$input.operations'",
-    ({ input, error }) => {
-      const { n, m, inputSignals, operations } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { n, m, inputSignals, operations } = input;
 
-      expect(() => solution(n, m, inputSignals, operations)).toThrow(error);
-    }
-  );
+    expect(() => solution(n, m, inputSignals, operations)).toThrow(error);
+  });
 });
