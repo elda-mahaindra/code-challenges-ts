@@ -113,17 +113,12 @@ const encode = (
     .join("");
 
   const mappedToRotors = rotors.reduce(
-    (mappedToRotors, rotor, i) =>
-      i
-        ? mappedToRotors
-            .split("")
-            .map((letter) => rotor[letter.charCodeAt(0) - "A".charCodeAt(0)])
-            .join("")
-        : shifted
-            .split("")
-            .map((letter) => rotor[letter.charCodeAt(0) - "A".charCodeAt(0)])
-            .join(""),
-    ""
+    (mappedToRotors, rotor) =>
+      mappedToRotors
+        .split("")
+        .map((letter) => rotor[letter.charCodeAt(0) - "A".charCodeAt(0)])
+        .join(""),
+    shifted
   );
 
   return mappedToRotors;
@@ -134,29 +129,17 @@ const decode = (
   rotors: string[],
   message: string
 ) => {
-  let mappedBackFromRotors = "";
+  let mappedBackFromRotors = message;
   for (let i = rotors.length - 1; i >= 0; i--) {
-    if (i === rotors.length - 1) {
-      mappedBackFromRotors = message
-        .split("")
-        .reduce(
-          (mappedBackFromRotors, letter) =>
-            mappedBackFromRotors.concat(
-              uppercaseAlphabetLetters[rotors[i].indexOf(letter)]
-            ),
-          ""
-        );
-    } else {
-      mappedBackFromRotors = mappedBackFromRotors
-        .split("")
-        .reduce(
-          (mappedBackFromRotors, letter) =>
-            mappedBackFromRotors.concat(
-              uppercaseAlphabetLetters[rotors[i].indexOf(letter)]
-            ),
-          ""
-        );
-    }
+    mappedBackFromRotors = mappedBackFromRotors
+      .split("")
+      .reduce(
+        (mappedBackFromRotors, letter) =>
+          mappedBackFromRotors.concat(
+            uppercaseAlphabetLetters[rotors[i].indexOf(letter)]
+          ),
+        ""
+      );
   }
 
   const shiftedBack = mappedBackFromRotors
