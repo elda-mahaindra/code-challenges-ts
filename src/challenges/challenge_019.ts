@@ -72,7 +72,7 @@ const isValid = (
       throw new Error(ErrorEnum.INVALID_MESSAGE);
     }
     // ensure each rotor has exactly 26 letters and doesn't have any letter dupication
-    case rotors.reduce((valid, rotor) => {
+    case rotors.reduce((invalid, rotor) => {
       const duplication = [...rotor.split("")]
         .sort((a, b) => (a > b ? 1 : -1))
         .reduce(
@@ -82,7 +82,9 @@ const isValid = (
         );
 
       return (
-        valid || duplication || rotor.length !== uppercaseAlphabetLetters.length
+        invalid ||
+        duplication ||
+        rotor.length !== uppercaseAlphabetLetters.length
       );
     }, false): {
       throw new Error(ErrorEnum.INVALID_ROTORS);
