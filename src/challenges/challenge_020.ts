@@ -99,7 +99,6 @@ const getDecodeSteps = (message: string) => {
 
 const decode = (message: string) => {
   const decodeSteps = getDecodeSteps(message);
-  console.log("decodeSteps.length: ", decodeSteps.length);
 
   let letters = message.split("");
   let decoded = "";
