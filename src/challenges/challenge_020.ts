@@ -103,10 +103,10 @@ const decode = (message: string) => {
   let letters = message.split("");
   let decoded = "";
 
-  let spliced: string[] = [];
-
   decodeSteps.forEach((step, i) => {
     const { count, end } = step;
+    let spliced: string[] = [];
+
     if (end) spliced = letters.splice(letters.length - count, count);
     else spliced = letters.splice(0, count);
 
