@@ -53,7 +53,7 @@
 
 export enum ErrorEnum {
   INVALID_ROWS = "The length of input 'rows' should equal to the input 'h'.",
-  OUT_OF_RANGE_H = "The length of input 'h' should be less than 200.",
+  OUT_OF_RANGE_H = "The value of input 'h' should be less than 200.",
 }
 
 const isValid = (h: number, rows: string[]) => {

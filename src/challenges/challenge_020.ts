@@ -37,7 +37,7 @@
 
 export enum ErrorEnum {
   OUT_OF_RANGE_MESSAGE = "The length of input 'message' should be between 1 and 1023.",
-  OUT_OF_RANGE_N = "The length of input 'N' should be between -10 and 10.",
+  OUT_OF_RANGE_N = "The value of input 'N' should be between -10 and 10.",
 }
 
 const isValid = (N: number, message: string) => {

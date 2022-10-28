@@ -46,7 +46,7 @@
 
 export enum ErrorEnum {
   INVALID_ROWS = "The length of input 'rows' should equal to the input 'n' and each row should be a valid row which composed by some single characters separated by a space.",
-  OUT_OF_RANGE_N = "The length of input 'N' should be between 1 and 10.",
+  OUT_OF_RANGE_N = "The value of input 'N' should be between 1 and 10.",
 }
 
 interface ICharMap {
