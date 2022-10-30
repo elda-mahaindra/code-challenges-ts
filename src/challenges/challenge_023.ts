@@ -203,12 +203,12 @@ const decimalToDecimary = (decimal: number) => {
       decimary = `${lastDigit}${decimary}`;
       splitted.splice(lastIndex, 1);
 
-      remainder = parseInt(splitted.join(""));
+      remainder = splitted.length ? parseInt(splitted.join("")) : 0;
     } else {
       decimary = `A${decimary}`;
       splitted.splice(lastIndex, 1);
 
-      remainder = parseInt(splitted.join("")) - 1;
+      remainder = splitted.length ? parseInt(splitted.join("")) - 1 : 0;
     }
   }
 
