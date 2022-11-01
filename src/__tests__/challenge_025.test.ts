@@ -84,7 +84,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_DIAMETER,
   },
   {
-    id: 0,
+    id: 1,
     input: { side: 100, diameter: 1 },
     error: ErrorEnum.OUT_OF_RANGE_SIDE,
   },
