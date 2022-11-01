@@ -6,6 +6,7 @@ const { ErrorEnum, solution } = jest.requireActual<typeof Challenge019>(
 
 const successCases = [
   {
+    id: 0,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -19,6 +20,7 @@ const successCases = [
     output: "KQF",
   },
   {
+    id: 1,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 4,
@@ -32,6 +34,7 @@ const successCases = [
     output: "AAA",
   },
   {
+    id: 2,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 25,
@@ -45,6 +48,7 @@ const successCases = [
     output: "OZN",
   },
   {
+    id: 3,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 25,
@@ -58,6 +62,7 @@ const successCases = [
     output: "AAA",
   },
   {
+    id: 4,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -71,6 +76,7 @@ const successCases = [
     output: "NVA",
   },
   {
+    id: 5,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 4,
@@ -84,6 +90,7 @@ const successCases = [
     output: "XXX",
   },
   {
+    id: 6,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -97,6 +104,7 @@ const successCases = [
     output: "VAK",
   },
   {
+    id: 7,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 4,
@@ -110,6 +118,7 @@ const successCases = [
     output: "YYY",
   },
   {
+    id: 8,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 7,
@@ -123,6 +132,7 @@ const successCases = [
     output: "ALWAURKQEQQWLRAWZHUYKVN",
   },
   {
+    id: 9,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 9,
@@ -136,6 +146,7 @@ const successCases = [
     output: "EVERYONEISWELCOMEHERE",
   },
   {
+    id: 10,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 9,
@@ -149,6 +160,7 @@ const successCases = [
     output: "PQSACVVTOISXFXCIAMQEM",
   },
   {
+    id: 11,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 9,
@@ -162,6 +174,7 @@ const successCases = [
     output: "PQSACVVTOISXFXCIAMQEMDZIXFJJSTQIENEFQXVZYV",
   },
   {
+    id: 12,
     input: {
       operation: "DECODE",
       pseudoRandomNumber: 5,
@@ -178,6 +191,7 @@ const successCases = [
 
 const failureCases = [
   {
+    id: 0,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 26,
@@ -191,6 +205,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_PSEUDO_RANDOM_NUMBER,
   },
   {
+    id: 1,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -200,6 +215,7 @@ const failureCases = [
     error: ErrorEnum.OUT_OF_RANGE_ROTORS,
   },
   {
+    id: 2,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -213,6 +229,7 @@ const failureCases = [
     error: ErrorEnum.INVALID_MESSAGE,
   },
   {
+    id: 3,
     input: {
       operation: "ENCODE",
       pseudoRandomNumber: 4,
@@ -228,37 +245,29 @@ const failureCases = [
 ];
 
 describe("test challenge 019", () => {
-  it.each(successCases)(
-    // "test sumAll($input) should result $output",
-    "returns '$output' when operation = '$input.operation', pseudoRandomNumber = '$input.pseudoRandomNumber', rotors = '$input.rotors', and message = '$input.message'",
-    ({ input, output }) => {
-      const { operation, pseudoRandomNumber, rotors, message } = input;
+  it.each(successCases)("success case $id", ({ input, output }) => {
+    const { operation, pseudoRandomNumber, rotors, message } = input;
 
-      expect(
-        solution(
-          operation as "ENCODE" | "DECODE",
-          pseudoRandomNumber,
-          rotors,
-          message
-        )
-      ).toBe(output);
-    }
-  );
+    expect(
+      solution(
+        operation as "ENCODE" | "DECODE",
+        pseudoRandomNumber,
+        rotors,
+        message
+      )
+    ).toBe(output);
+  });
 
-  it.each(failureCases)(
-    // "test sumAll($input) should result $output",
-    "throws an error '$error' when operation = '$input.operation', pseudoRandomNumber = '$input.pseudoRandomNumber', rotors = '$input.rotors', and message = '$input.message'",
-    ({ input, error }) => {
-      const { operation, pseudoRandomNumber, rotors, message } = input;
+  it.each(failureCases)("failure case $id", ({ input, error }) => {
+    const { operation, pseudoRandomNumber, rotors, message } = input;
 
-      expect(() =>
-        solution(
-          operation as "ENCODE" | "DECODE",
-          pseudoRandomNumber,
-          rotors,
-          message
-        )
-      ).toThrow(error);
-    }
-  );
+    expect(() =>
+      solution(
+        operation as "ENCODE" | "DECODE",
+        pseudoRandomNumber,
+        rotors,
+        message
+      )
+    ).toThrow(error);
+  });
 });
