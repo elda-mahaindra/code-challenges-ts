@@ -27,7 +27,7 @@
         • operations: an array of strings where each string represents the operation type, arg1, and arg2 separated by a space.
 
     Output
-    An array of N numbers where each string represents the value of each cell.
+    An array of N numbers where each number represents the value of each cell.
 
     Constraints:
     • 1 ≤ N ≤ 100
