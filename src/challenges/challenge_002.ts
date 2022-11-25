@@ -42,8 +42,6 @@ export enum ErrorEnum {
   INVALID_INPUT_RANGE = "The input 'board' should contain only numbers between 1 to 9.",
 }
 
-const boardSideLength = 9;
-
 const isValid = (board: number[][]) => {
   const checkValidDimension = (
     board: number[][],
@@ -75,7 +73,7 @@ const isValid = (board: number[][]) => {
   };
 
   switch (true) {
-    case !checkValidDimension(board, boardSideLength, boardSideLength): {
+    case !checkValidDimension(board, 9, 9): {
       throw new Error(ErrorEnum.INVALID_INPUT_DIMENSION);
     }
     case !checkValidRange(board, 1, 9): {
@@ -108,18 +106,14 @@ const transpose = (matrix: number[][]) => {
  * @param {number[][]} board - 9x9 board
  * @returns
  */
-const transform = (
-  board: number[][],
-  boardSideLength: number,
-  sideLength: number
-) => {
+const transform = (board: number[][]) => {
   const transformed = board.map((row) => row.map(() => 0));
 
-  for (let i = 0; i < boardSideLength / sideLength; i++) {
+  for (let i = 0; i < 3; i++) {
     const sliced = [...board].slice(3 * i, 3 + 3 * i);
     const transposed = transpose(sliced);
 
-    for (let j = 0; j < boardSideLength / sideLength; j++) {
+    for (let j = 0; j < 3; j++) {
       const sliced = [...transposed].slice(3 * j, 3 + 3 * j);
       const reduced = sliced.reduce(
         (reduced, numbers) => [...reduced, ...numbers],
@@ -146,7 +140,7 @@ export const solution = (board: number[][]) => {
       duplicationInColumn || checkDuplication(column),
     false
   );
-  const duplicationInSmallBoard = transform(board, boardSideLength, 3).reduce(
+  const duplicationInSmallBoard = transform(board).reduce(
     (duplicationInSmallBoard, smallBoard) =>
       duplicationInSmallBoard || checkDuplication(smallBoard),
     false
