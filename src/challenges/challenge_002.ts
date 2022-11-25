@@ -38,8 +38,8 @@
 */
 
 export enum ErrorEnum {
-  INVALID_INPUT_DIMENSION = "The input 'board' should be a 9 x 9 sudoku board.",
-  INVALID_INPUT_RANGE = "The input 'board' should contain only numbers between 1 to 9.",
+  INVALID_BOARD_DIMENSION = "The input 'board' should be a 9 x 9 sudoku board.",
+  OUT_OF_RANGE_BOARD_VALUE = "The input 'board' should contain only numbers between 1 to 9.",
 }
 
 const isValid = (board: number[][]) => {
@@ -74,10 +74,10 @@ const isValid = (board: number[][]) => {
 
   switch (true) {
     case !checkValidDimension(board, 9, 9): {
-      throw new Error(ErrorEnum.INVALID_INPUT_DIMENSION);
+      throw new Error(ErrorEnum.INVALID_BOARD_DIMENSION);
     }
     case !checkValidRange(board, 1, 9): {
-      throw new Error(ErrorEnum.INVALID_INPUT_RANGE);
+      throw new Error(ErrorEnum.OUT_OF_RANGE_BOARD_VALUE);
     }
     default: {
       return true;

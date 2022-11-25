@@ -55,7 +55,7 @@ const failureCases = [
         [1, 3, 6, 7, 4, 8, 5],
       ],
     },
-    error: ErrorEnum.INVALID_INPUT_DIMENSION,
+    error: ErrorEnum.INVALID_BOARD_DIMENSION,
   },
   {
     id: 1,
@@ -72,7 +72,7 @@ const failureCases = [
         [5, 2, 8, 6, 3, 0, 4, 1, 7],
       ],
     },
-    error: ErrorEnum.INVALID_INPUT_RANGE,
+    error: ErrorEnum.OUT_OF_RANGE_BOARD_VALUE,
   },
 ];
 
