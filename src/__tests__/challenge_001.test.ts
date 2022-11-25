@@ -27,20 +27,13 @@ const successCases = [
 const failureCases = [
   {
     id: 0,
-    input: { s: "0000000012312313123" },
-    error: ErrorEnum.ALPHABET_NOT_FOUND,
+    input: { s: "0000000000000012312313123" },
+    error: ErrorEnum.INVALID_S,
   },
   {
     id: 1,
     input: { s: "" },
-    error: ErrorEnum.MIN_LENGTH_REACHED,
-  },
-  {
-    id: 2,
-    input: {
-      s: "zvchW39Kt5mQQLXXE8IekkBAVOjwRVaKaHGwSI44uuJ005n1luXnfwW8pBW7S1ujXdrintWaZ7nK6dBsjch4BRPYazB2kdcAgfZak",
-    },
-    error: ErrorEnum.MAX_LENGTH_REACHED,
+    error: ErrorEnum.OUT_OF_RANGE_S,
   },
 ];
 

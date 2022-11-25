@@ -19,9 +19,8 @@
 */
 
 export enum ErrorEnum {
-  ALPHABET_NOT_FOUND = "The string input 's' should contain at least one alphabet letter.",
-  MAX_LENGTH_REACHED = "The length of the string input 's' should not exceed 100 characters.",
-  MIN_LENGTH_REACHED = "The string input 's' should contain at least one character.",
+  INVALID_S = "The string input 's' should contain at least one alphabet letter.",
+  OUT_OF_RANGE_S = "The length of input 's' should be between 1 and 100.",
 }
 
 interface IStatus {
@@ -31,15 +30,12 @@ interface IStatus {
 
 const isValid = (s: string) => {
   switch (true) {
-    case s.length < 1: {
-      throw new Error(ErrorEnum.MIN_LENGTH_REACHED);
-    }
-    case s.length > 100: {
-      throw new Error(ErrorEnum.MAX_LENGTH_REACHED);
+    case s.length < 1 || s.length > 100: {
+      throw new Error(ErrorEnum.OUT_OF_RANGE_S);
     }
     // ensure there is at least one alphabet letter in the input string
     case !s.split("").reduce((res, c) => res || /[a-zA-Z]/.test(c), false): {
-      throw new Error(ErrorEnum.ALPHABET_NOT_FOUND);
+      throw new Error(ErrorEnum.INVALID_S);
     }
     default: {
       return true;
