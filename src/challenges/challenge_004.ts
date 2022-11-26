@@ -120,6 +120,7 @@ export const solution = (
 
       moves = moves.concat(` ${found[0]}`);
       distanceYLeft = distanceYLeft + (distanceYLeft > 0 ? -1 : 1);
+      distanceXLeft -= 1;
     } else if (distanceXLeft < 0) {
       const found = moveDirections.find(
         (dir) =>
@@ -128,6 +129,7 @@ export const solution = (
 
       moves = moves.concat(` ${found[0]}`);
       distanceYLeft = distanceYLeft + (distanceYLeft > 0 ? -1 : 1);
+      distanceXLeft += 1;
     } else if (distanceYLeft > 0) {
       const found = moveDirections.find(
         (dir) =>
@@ -136,6 +138,7 @@ export const solution = (
 
       moves = moves.concat(` ${found[0]}`);
       distanceXLeft = distanceXLeft + (distanceXLeft > 0 ? -1 : 1);
+      distanceYLeft -= 1;
     } else {
       const found = moveDirections.find(
         (dir) =>
@@ -144,6 +147,7 @@ export const solution = (
 
       moves = moves.concat(` ${found[0]}`);
       distanceXLeft = distanceXLeft + (distanceXLeft > 0 ? -1 : 1);
+      distanceYLeft += 1;
     }
   }
 

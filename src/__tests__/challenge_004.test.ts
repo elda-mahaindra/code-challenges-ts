@@ -29,13 +29,13 @@ const successCases = [
     id: 4,
     input: { lightX: 0, lightY: 17, initialTx: 31, initialTy: 4 },
     output:
-      "SW SW SW SW SW SW SW SW SW SW SW SW SW W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W",
+      "SW SW SW SW SW SW SW SW SW SW SW SW SW W W W W W W W W W W W W W W W W W W",
   },
   {
     id: 5,
     input: { lightX: 36, lightY: 17, initialTx: 0, initialTy: 0 },
     output:
-      "SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E E",
+      "SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE E E E E E E E E E E E E E E E E E E E",
   },
 ];
 
