@@ -109,13 +109,11 @@ export const solution = (T: string) => {
     .split("")
     .map((input) => (/[a-zA-Z]/.test(input) ? input : "?"));
 
-  const tIndexes = inputs.reduce(
-    (tIndexes, tChar) => [
-      ...tIndexes,
-      [...charsAvailable].findIndex((c) => c === tChar)!,
-    ],
-    [] as number[]
-  );
+  const tIndexes = inputs.map((char) => {
+    const foundIndex = [...charsAvailable].findIndex((c) => c === char)!;
+
+    return foundIndex;
+  });
 
   let result: string[] = [];
   for (let i = 0; i < H; i++) {
