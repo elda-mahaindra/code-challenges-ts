@@ -4,7 +4,7 @@
     Thor moves on a map which is 40 wide by 18 high. Note that the coordinates (X and Y) start at the top left! 
     This means the most top left cell has the coordinates "X=0,Y=0" and the most bottom right one has the coordinates "X=39,Y=17".
 
-    At the end of the game turn, you must output the direction in which you want Thor to go among:
+    You must output the directions in which you want Thor to go to reach the Light:
     N (North), NE (North-East), E (East), SE (South-East), S (South), SW (South-West), W (West), NW (North-West)
 
     Each movement makes Thor move by 1 cell in the chosen direction.
