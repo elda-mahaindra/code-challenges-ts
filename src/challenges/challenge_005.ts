@@ -76,6 +76,21 @@ export enum ErrorEnum {
   OUT_OF_RANGE_N = "The length of input 'T' should be between 1 and 199.",
 }
 
+const charsAvailable = "ABCDEFGHIJKLMNOPQRSTUVWXYZ?";
+const totalCharsAvailable = charsAvailable.length;
+
+const reducedRows = rows.reduce((reducedRows, row) => {
+  let reducedRow: string[] = [];
+
+  for (let i = 0; i < totalCharsAvailable; i++) {
+    const sliced = row.slice(i * L, i * L + L);
+
+    reducedRow = [...reducedRow, sliced];
+  }
+
+  return [...reducedRows, reducedRow];
+}, [] as string[][]);
+
 const isValid = (T: string) => {
   switch (true) {
     case T.length <= 0 || T.length >= 200: {
@@ -90,23 +105,9 @@ const isValid = (T: string) => {
 export const solution = (T: string) => {
   isValid(T);
 
-  const charsAvailable = "ABCDEFGHIJKLMNOPQRSTUVWXYZ?";
-  const totalCharsAvailable = charsAvailable.length;
   const inputs = T.toUpperCase()
     .split("")
     .map((input) => (/[a-zA-Z]/.test(input) ? input : "?"));
-
-  const reducedRows = rows.reduce((reducedRows, row) => {
-    let reducedRow: string[] = [];
-
-    for (let i = 0; i < totalCharsAvailable; i++) {
-      const sliced = row.slice(i * L, i * L + L);
-
-      reducedRow = [...reducedRow, sliced];
-    }
-
-    return [...reducedRows, reducedRow];
-  }, [] as string[][]);
 
   const tIndexes = inputs.reduce(
     (tIndexes, tChar) => [
