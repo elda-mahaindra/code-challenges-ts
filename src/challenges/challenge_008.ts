@@ -138,7 +138,7 @@ const isValid = (N: number, playerSigns: string[]) => {
     case !validateN(N): {
       throw new Error(ErrorEnum.INVALID_N);
     }
-    // ensure each Pi inside powers following the constraint
+    // ensure each playerSign inside 'playerSigns' following the constraint
     case !validatePlayerSigns(playerSigns): {
       throw new Error(ErrorEnum.INVALID_PLAYER_SIGNS);
     }
