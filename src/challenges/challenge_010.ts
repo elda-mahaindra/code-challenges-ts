@@ -104,7 +104,7 @@ const isValid = (forest: string[]) => {
 export const solution = (forest: string[]) => {
   isValid(forest);
 
-  let removedTress = 0;
+  let removedTrees = 0;
   let firePoints: { x: number; y: number }[] = [];
 
   for (let j = 0; j < 6; j++) {
@@ -141,7 +141,7 @@ export const solution = (forest: string[]) => {
 
         if (fires.length) {
           resultSquares[i] = "=";
-          removedTress += 1;
+          removedTrees += 1;
         }
       }
     }
@@ -156,5 +156,5 @@ export const solution = (forest: string[]) => {
     false
   );
 
-  return anyTreesRemain ? removedTress : "JUST RUN";
+  return anyTreesRemain ? removedTrees : "JUST RUN";
 };
