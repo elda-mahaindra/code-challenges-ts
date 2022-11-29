@@ -56,7 +56,7 @@ export const solution = (N: number, inputs: string) => {
 
   const temps = inputs.split(" ").map((input) => parseInt(input));
 
-  const lowestTemps = temps.reduce((lowestTemps, temp, i) => {
+  const tempsClosestToZero = temps.reduce((lowestTemps, temp, i) => {
     if (!i) return [temp];
 
     const diff1 = difference(0, temp);
@@ -69,7 +69,9 @@ export const solution = (N: number, inputs: string) => {
     return [...lowestTemps, temp];
   }, [] as number[]);
 
-  const lowestTemp = lowestTemps.sort((a, b) => (a < b ? 1 : -1))[0];
+  const tempClosestToZero = tempsClosestToZero.sort((a, b) =>
+    a < b ? 1 : -1
+  )[0];
 
-  return lowestTemp;
+  return tempClosestToZero;
 };
