@@ -22,7 +22,7 @@
         Output: 1
     
     Example 2:
-        Input: N = 5, inputs = ""
+        Input: N = 0, inputs = ""
         Output: 0
 
     source: codingame
