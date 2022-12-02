@@ -100,23 +100,23 @@ const calculateScore = (
 
   let remainingLetters = letters.split("");
   let matchingChars = "";
-  let totalPoint = 0;
+  let totalScore = 0;
 
   for (let i = 0; i < word.length; i++) {
     const indexFound = remainingLetters.indexOf(word[i]);
 
     if (indexFound >= 0) {
-      const point = scrabbleScores.find((p) =>
+      const score = scrabbleScores.find((p) =>
         p.letters.includes(word[i])
       )!.score;
 
-      totalPoint += point;
+      totalScore += score;
       remainingLetters.splice(indexFound, 1);
       matchingChars = matchingChars.concat(word[i]);
     }
   }
 
-  if (matchingChars === word) return totalPoint;
+  if (matchingChars === word) return totalScore;
 
   return 0;
 };
@@ -124,13 +124,13 @@ const calculateScore = (
 export const solution = (N: number, dictionary: string[], letters: string) => {
   isValid(N, dictionary, letters);
 
-  let highestPointHolder = { word: "", point: 0 };
+  let highestScoreHolder = { word: "", score: 0 };
   for (let i = 0; i < dictionary.length; i++) {
-    const point = calculateScore(letters, dictionary[i], scrabbleScores);
+    const score = calculateScore(letters, dictionary[i], scrabbleScores);
 
-    if (point > highestPointHolder.point)
-      highestPointHolder = { word: dictionary[i], point };
+    if (score > highestScoreHolder.score)
+      highestScoreHolder = { word: dictionary[i], score };
   }
 
-  return highestPointHolder.word;
+  return highestScoreHolder.word;
 };
