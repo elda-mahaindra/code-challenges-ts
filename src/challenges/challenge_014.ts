@@ -58,14 +58,14 @@ export enum ErrorEnum {
   OUT_OF_RANGE_WORD = "Each string inside the input 'dictionary' should have maximum of 30 characters length.",
 }
 
-const scrabblePoints = [
-  { point: 1, letters: "eaionrtlsu" },
-  { point: 2, letters: "dg" },
-  { point: 3, letters: "bcmp" },
-  { point: 4, letters: "fhvwy" },
-  { point: 5, letters: "k" },
-  { point: 8, letters: "jx" },
-  { point: 10, letters: "qz" },
+const scrabbleScores = [
+  { score: 1, letters: "eaionrtlsu" },
+  { score: 2, letters: "dg" },
+  { score: 3, letters: "bcmp" },
+  { score: 4, letters: "fhvwy" },
+  { score: 5, letters: "k" },
+  { score: 8, letters: "jx" },
+  { score: 10, letters: "qz" },
 ];
 
 const isValid = (N: number, dictionary: string[], letters: string) => {
@@ -91,7 +91,11 @@ const isValid = (N: number, dictionary: string[], letters: string) => {
   }
 };
 
-const calculatePoint = (letters: string, word: string) => {
+const calculateScore = (
+  letters: string,
+  word: string,
+  scrabbleScores: { score: number; letters: string }[]
+) => {
   if (word.length > letters.length) return 0;
 
   let remainingLetters = letters.split("");
@@ -102,9 +106,9 @@ const calculatePoint = (letters: string, word: string) => {
     const indexFound = remainingLetters.indexOf(word[i]);
 
     if (indexFound >= 0) {
-      const point = scrabblePoints.find((p) =>
+      const point = scrabbleScores.find((p) =>
         p.letters.includes(word[i])
-      )!.point;
+      )!.score;
 
       totalPoint += point;
       remainingLetters.splice(indexFound, 1);
@@ -122,7 +126,7 @@ export const solution = (N: number, dictionary: string[], letters: string) => {
 
   let highestPointHolder = { word: "", point: 0 };
   for (let i = 0; i < dictionary.length; i++) {
-    const point = calculatePoint(letters, dictionary[i]);
+    const point = calculateScore(letters, dictionary[i], scrabbleScores);
 
     if (point > highestPointHolder.point)
       highestPointHolder = { word: dictionary[i], point };
