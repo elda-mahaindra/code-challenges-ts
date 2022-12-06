@@ -79,12 +79,12 @@ const isValid = (n: number, rows: string[]) => {
 export const solution = (n: number, rows: string[], message: string) => {
   isValid(n, rows);
 
-  const charMaps = rows.reduce((charMaps, row, x) => {
+  const charMaps = rows.reduce((charMaps, row, y) => {
     const splitted = row.split(" ");
 
     let maps: ICharMap[] = [];
-    for (let y = 0; y < splitted.length; y++) {
-      maps = [...maps, { char: splitted[y], position: [x, y] }];
+    for (let x = 0; x < splitted.length; x++) {
+      maps = [...maps, { char: splitted[x], position: [x, y] }];
     }
 
     return [...charMaps, ...maps];
@@ -96,7 +96,7 @@ export const solution = (n: number, rows: string[], message: string) => {
       const found = charMaps.find((charMap) => charMap.char === letter)!;
       const [x, y] = found.position;
 
-      return `${x}${y}`;
+      return `${y}${x}`;
     })
     .join("");
 
