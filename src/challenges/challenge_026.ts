@@ -13,7 +13,7 @@
         • rawChanges: an array of strings where each string represents the change.
 
     Output
-    a string that represents the manipulated string.
+    an array of strings where each string represents the manipulated string in one row.
 
     Constraints:
     • the length of s ≥ 1
@@ -21,8 +21,11 @@
     • each string inside 'rawChanges' should be in the format of <Line number>|<Column number>|<String to be added>
 
     Example 1:
-        Input: side = 3, diameter = 1
-        Output: 2
+        Input: 
+          s = "Hello world",
+          changeCount = 4,
+          rawChanges = ["0|11|!", "0|5|,\\n", "0|7| w", "0|10|\\n"],
+        Output: ["Hello,", " w worl", "d!"]
 
     source: codingame
 */
