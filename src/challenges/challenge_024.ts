@@ -55,7 +55,7 @@ interface ICell {
   op: TOperation;
   arg1: string;
   arg2: string;
-  counted: boolean;
+  calculated: boolean;
   value: number;
 }
 
@@ -73,7 +73,7 @@ const isValid = (N: number, operations: string[]) => {
   }
 };
 
-const count = (operationType: TOperation, arg1: number, arg2: number) => {
+const calculate = (operationType: TOperation, arg1: number, arg2: number) => {
   switch (operationType) {
     case "VALUE": {
       return arg1;
@@ -91,48 +91,48 @@ const count = (operationType: TOperation, arg1: number, arg2: number) => {
   }
 };
 
-const checkCounted = (cells: ICell[]) =>
-  cells.reduce((allCounted, cell) => allCounted && cell.counted, true);
+const checkAllCalculated = (cells: ICell[]) =>
+  cells.reduce((allCalculated, cell) => allCalculated && cell.calculated, true);
 
 export const solution = (N: number, operations: string[]) => {
   isValid(N, operations);
 
   let cells: ICell[] = operations.map((operation) => {
     const [op, arg1, arg2] = operation.split(" ");
-    let counted = false;
+    let calculated = false;
     let value = 0;
 
     if (!arg1.includes("$") && !arg2.includes("$")) {
       const intParsedArg1 = parseInt(arg1);
       const intParsedArg2 = parseInt(arg2);
 
-      value = count(op as TOperation, intParsedArg1, intParsedArg2);
-      counted = true;
+      value = calculate(op as TOperation, intParsedArg1, intParsedArg2);
+      calculated = true;
     }
 
     return {
       op: op as TOperation,
       arg1,
       arg2,
-      counted,
+      calculated,
       value,
     };
   });
 
-  let allCounted = checkCounted(cells);
+  let allCalculated = checkAllCalculated(cells);
 
-  while (!allCounted) {
+  while (!allCalculated) {
     cells = cells.map((cell, i, cells) => {
-      const { op, arg1, arg2, counted } = cell;
+      const { op, arg1, arg2, calculated } = cell;
 
-      if (!counted) {
+      if (!calculated) {
         let intParsedArg1 = 0;
         let intParsedArg2 = 0;
 
         if (arg1.includes("$")) {
           const cellRef1 = cells[parseInt(arg1.substring(1))];
 
-          if (!cellRef1.counted) return cell;
+          if (!cellRef1.calculated) return cell;
 
           intParsedArg1 = cellRef1.value;
         } else intParsedArg1 = parseInt(arg1);
@@ -140,7 +140,7 @@ export const solution = (N: number, operations: string[]) => {
         if (arg2.includes("$")) {
           const cellRef2 = cells[parseInt(arg2.substring(1))];
 
-          if (!cellRef2.counted) return cell;
+          if (!cellRef2.calculated) return cell;
 
           intParsedArg2 = cellRef2.value;
         } else intParsedArg2 = parseInt(arg2);
@@ -149,15 +149,15 @@ export const solution = (N: number, operations: string[]) => {
           op: op as TOperation,
           arg1,
           arg2,
-          counted: true,
-          value: count(op, intParsedArg1, intParsedArg2),
+          calculated: true,
+          value: calculate(op, intParsedArg1, intParsedArg2),
         };
       }
 
       return cell;
     });
 
-    allCounted = checkCounted(cells);
+    allCalculated = checkAllCalculated(cells);
   }
 
   return cells.map((cell) => parseInt(cell.value.toString()));
