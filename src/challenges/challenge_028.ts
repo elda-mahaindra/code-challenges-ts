@@ -35,7 +35,7 @@
         • coordinates: an array of string where each string represents the coordinate to be tested (X and Y separated by a space)
 
     Output
-    An array of N integer where each integer represents the amount of surface areas of the lake.
+    An array of N integer where each integer represents the amount of surface areas of the lake located at the coordinates given in input.
 
     Constraints:
     • 0 < L < 10000
