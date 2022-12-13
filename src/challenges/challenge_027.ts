@@ -28,7 +28,7 @@
 
 export enum ErrorEnum {
   INVALID_NUM = "The length of input 'nums' should be equal to input 'N' and each element inside it should represent an integer value between 1 and 10^26.",
-  OUT_OF_RANGE_N = "The length of input 'N' should be between 1 and 100.",
+  OUT_OF_RANGE_N = "The value of input 'N' should be between 1 and 100.",
 }
 
 const isValid = (N: number, strNums: string[]) => {

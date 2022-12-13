@@ -64,9 +64,9 @@
 export enum ErrorEnum {
   INVALID_COORDINATES = "The length of input 'coordinates' should be equal to input 'N' and each element inside it should represent a valid coordinate.",
   INVALID_ROWS = "The length of input 'rows' should be equal to input 'H' and each element inside it should be a string with the length of 'L' and consists of only '#' or 'O' character.",
-  OUT_OF_RANGE_L = "The length of input 'L' should be between 1 and 9999.",
-  OUT_OF_RANGE_H = "The length of input 'H' should be between 1 and 9990.",
-  OUT_OF_RANGE_N = "The length of input 'N' should be between 1 and 999.",
+  OUT_OF_RANGE_L = "The value of input 'L' should be between 1 and 9999.",
+  OUT_OF_RANGE_H = "The value of input 'H' should be between 1 and 9990.",
+  OUT_OF_RANGE_N = "The value of input 'N' should be between 1 and 999.",
 }
 
 type TPosition = [number, number];

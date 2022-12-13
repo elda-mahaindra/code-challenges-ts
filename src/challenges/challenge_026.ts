@@ -32,8 +32,8 @@
 
 export enum ErrorEnum {
   INVALID_RAW_CHANGE = "The length of input 'rawChanges' should equal to the input 'changeCount' and each change should be a valid change.",
-  OUT_OF_RANGE_CHANGE_COUNT = "The length of input 'changeCount' should be between 1 and 10.",
-  OUT_OF_RANGE_S = "The length of input 's' should be more than 0.",
+  OUT_OF_RANGE_CHANGE_COUNT = "The value of input 'changeCount' should be between 1 and 10.",
+  OUT_OF_RANGE_S = "The value of input 's' should be more than 0.",
 }
 
 interface IChange {
