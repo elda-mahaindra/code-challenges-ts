@@ -129,10 +129,3 @@ export const solution = (n: number, associations: string[], s: string) => {
 
   return decodingFail ? `DECODE FAIL AT INDEX ${decodedCount}` : decoded;
 };
-
-const n = 5,
-  associations = ["1 97", "001 98", "000 114", "011 99", "010 100"],
-  s = "10010001011101010010001",
-  result = solution(n, associations, s);
-
-console.error(result);
