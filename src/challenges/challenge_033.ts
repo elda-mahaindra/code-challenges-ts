@@ -43,7 +43,7 @@
 
 export enum ErrorEnum {
   INVALID_ARRAY_ASSIGNMENTS = "The length of input 'assignments' should be equal to input 'n' and each assignment should be a valid assignment according to the constraints",
-  INVALID_ELEMENT = "The input 'element' should have at most 50 levels of nesting.",
+  INVALID_ELEMENT = "The input 'element' should be a valid indexing operation and have at most 50 levels of nesting.",
   OUT_OF_RANGE_N = "The value of input 'n' should be between 1 and 100.",
 }
 
